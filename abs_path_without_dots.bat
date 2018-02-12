@@ -2,6 +2,9 @@
 @REM abs_path_without_dots
 @REM  - global variable that contains an absolute path without dots (without a relative reference).
 
+@REM Warning! This solution removes quotes from any input path.
+
+
 @REM Usage:
 
 @REM #1 Removes dots from a fully-qualified (absolute) path with dots (with a relative reference https://stackoverflow.com/a/3670775).
