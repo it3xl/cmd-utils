@@ -10,7 +10,7 @@ CALL ..\abs_path_without_dots.bat  "%~dp0..\dummy.txt"
 @ECHO.
 @ECHO.
 @ECHO.
-@ECHO Relateiv input path behaviour
+@ECHO Relative input path behaviour
 @ECHO.
 @ECHO CD at beginning is
 @ECHO %CD%
