@@ -1,9 +1,15 @@
 
 
 @ECHO.
-
-
+@ECHO With quotes
 CALL ..\abs_path_without_dots.bat  "%~dp0..\dummy.txt"
+@ECHO.
+@ECHO abs_path_without_dots = %abs_path_without_dots%
+
+@ECHO.
+@ECHO.
+@ECHO Without quotes
+CALL ..\abs_path_without_dots.bat  %~dp0..\dummy.txt
 @ECHO.
 @ECHO abs_path_without_dots = %abs_path_without_dots%
 
