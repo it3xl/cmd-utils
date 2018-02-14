@@ -1,11 +1,11 @@
 @SETLOCAL
 
-@ECHO %~n0
+@ECHO %~nx0
 
 SET procName=%~1
 IF ["%procName%"] EQU [""] EXIT 1001
 
-@ECHO %~n0 "%procName%"
+@ECHO %~nx0 "%procName%"
 
 TSKILL "%procName%" /A
 

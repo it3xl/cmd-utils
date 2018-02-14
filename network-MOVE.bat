@@ -3,7 +3,7 @@
 @REM ECHO OFF
 
 
-@ECHO %~n0
+@ECHO %~nx0
 @CALL %q_env_cmd_util%\exit_if_error
 
 @REM This method is much faster than ROBOCOPY!

@@ -3,7 +3,7 @@
 CALL %q_env_cmd_util%\exit_if_error
 
 @ECHO.
-ECHO Starting %~n0
+ECHO Starting %~nx0
 @ECHO.
 
 SET executorKey=%~n0-executor

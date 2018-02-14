@@ -1,11 +1,11 @@
 @SETLOCAL
 
-@ECHO %~n0
+@ECHO %~nx0
 
 SET reg_key=%~1
 IF ["%reg_key%"] EQU [""] EXIT 1001
 
-@ECHO %~n0 "%reg_key%"
+@ECHO %~nx0 "%reg_key%"
 
 REG DELETE "%reg_key%" /f
 
