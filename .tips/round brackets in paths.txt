@@ -1,0 +1,27 @@
+Be aware of a severe CMD interruption by variables with round brackets in its value.
+As an example:
+    SET v=C:\Program Files (x86)\Some folder
+
+Such a variable will broke the execution in case of using round brackets in expressions.
+As an example:
+    IF 1==1 (
+      SET x=%v%
+    )
+    ECHO ready
+
+gives the error "\Some was unexpected at this time"
+
+Workaround
+Store such paths in double quotes and strip them when needed.
+https://stackoverflow.com/questions/2410501/parenthesis-in-windows-cmd-script-variable-values-not-allowed/16894316#16894316
+As an example:
+    SET v="C:\Program Files (x86)\Some folder"
+    IF 1==1 (
+      SET x=%v%
+    )
+    ECHO ready
+
+    @REM Removes double quotes
+    SET x=%x:"=%
+
+
