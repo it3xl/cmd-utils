@@ -1,3 +1,8 @@
+
+
+@REM ! WARNING ! UNC paths are not supported.
+
+
 @REM Results:
 @REM abs_path_without_dots
 @REM  - global variable that contains an absolute path without dots (without a relative reference).
