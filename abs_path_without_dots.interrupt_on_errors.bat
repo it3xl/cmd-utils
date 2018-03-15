@@ -5,7 +5,7 @@
 SET invokePath_abs_path_without_dots=%~dp0.
 SET invokePath_abs_path_without_dots=%invokePath_abs_path_without_dots:"=%
 
-CALL "invokePath_abs_path_without_dots\abs_path_without_dots.emit_errors.bat" %*
+CALL "%invokePath_abs_path_without_dots%\abs_path_without_dots.emit_errors.bat" %*
 
 @IF %ERRORLEVEL% NEQ 0 (
   @ECHO Exit with an error. CMD has ERRORLEVEL = %ERRORLEVEL%.

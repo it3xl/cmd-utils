@@ -15,6 +15,13 @@ CALL ..\abs_path_without_dots.emit_errors.bat  %~dp0..\dummy.txt
 @ECHO abs_path_without_dots = %abs_path_without_dots%
 
 @ECHO.
+@CALL REM Suppresses previous errors.
+@ECHO  @ Can work from other directories.
+CALL ..\abs_path_without_dots.bat  "%~dp0..\other_file.txt"
+@ECHO Assertion: ERRORLEVEL must be 0 and is %ERRORLEVEL%
+@ECHO abs_path_without_dots = %abs_path_without_dots%
+
+@ECHO.
 @ECHO  @ Relative input path behaviour.
 SET start_path=%CD%
 @ECHO CD at the beginning is %start_path%
