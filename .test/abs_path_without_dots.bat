@@ -66,4 +66,4 @@ FOR /F %%i IN ("%~dp0..\dummy.txt") DO ( ECHO The absolute path for & ECHO "%~dp
 
 
 @ECHO.
-
+PAUSE
