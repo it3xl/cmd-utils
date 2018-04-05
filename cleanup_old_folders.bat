@@ -28,6 +28,10 @@ FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:D "%target_cleanup_folder
   @REM ! SET= do not works in loops!
   ECHO deleting %target_cleanup_folder%\%%F
   RD /S /Q "%target_cleanup_folder%\%%F"
+  @REM https://stackoverflow.com/questions/22948189/batch-getting-the-directory-is-not-empty-on-rmdir-command/22949687#22949687
+  IF EXIST "%target_cleanup_folder%\%%F" (
+    RD /S /Q "%target_cleanup_folder%\%%F"
+  )
 )
 
 @CALL %q_env_cmd_util%\exit_if_error
