@@ -32,5 +32,5 @@ FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:-D "%target_cleanup_folde
 
 @CALL %q_env_cmd_util%\exit_if_error
 
-@REM Without the next simple ECHO I am receiving ERRORLEVEL = 1 if there's no need to delete files.
+
 ECHO End of %~nx0
