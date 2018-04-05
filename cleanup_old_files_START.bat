@@ -32,4 +32,4 @@ START "%~nx0"^
 @CALL "%invokePath%\exit_if_error"
 
 
-ECHO End of %~nx0
+ECHO End %~nx0

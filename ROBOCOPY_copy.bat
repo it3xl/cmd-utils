@@ -1,7 +1,12 @@
 @SETLOCAL
 
 @ECHO %~nx0
-@CALL %q_env_cmd_util%\exit_if_error
+
+SET invokePath=%~dp0.
+@REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
+SET invokePath=%invokePath:"=%
+
+@CALL "%invokePath%\exit_if_error"
 
 SET source=%1
 @ECHO source: %source%

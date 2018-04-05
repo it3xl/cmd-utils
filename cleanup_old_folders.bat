@@ -1,7 +1,12 @@
 @SETLOCAL
 
 @ECHO %~nx0
-@CALL %q_env_cmd_util%\exit_if_error
+
+SET invokePath=%~dp0.
+@REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
+SET invokePath=%invokePath:"=%
+
+@CALL "%invokePath%\exit_if_error"
 
 SET cleanup_skip_newest_amount=%1
 IF [%cleanup_skip_newest_amount%] EQU [] EXIT 1001
@@ -34,7 +39,7 @@ FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:D "%target_cleanup_folder
   )
 )
 
-@CALL %q_env_cmd_util%\exit_if_error
+@CALL "%invokePath%\exit_if_error"
 
 
-ECHO End of %~nx0
+ECHO End %~nx0

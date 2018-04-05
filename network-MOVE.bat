@@ -4,7 +4,12 @@
 
 
 @ECHO %~nx0
-@CALL %q_env_cmd_util%\exit_if_error
+
+SET invokePath=%~dp0.
+@REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
+SET invokePath=%invokePath:"=%
+
+@CALL "%invokePath%\exit_if_error"
 
 @REM This method is much faster than ROBOCOPY!
 
@@ -26,97 +31,97 @@ MOVE /Y %source% %target%
 
 IF EXIST %source% (
   @ECHO Attempt #2 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #3 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #4 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #5 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #6 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #7 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #8 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #9 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #10 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #11 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #12 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #13 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #14 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #15 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #16 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #17 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #18 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #19 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 IF EXIST %source% (
   @ECHO Attempt #20 of 20
-  @CALL %q_env_cmd_util%\delay-seconds.bat 3
+  @CALL "%invokePath%\delay-seconds.bat" 3
   MOVE /Y %source% %target%
 )
 
@@ -130,4 +135,7 @@ IF EXIST %source% (
 
 
 
-@CALL %q_env_cmd_util%\exit_if_error
+@CALL "%invokePath%\exit_if_error"
+
+
+ECHO End %~nx0
