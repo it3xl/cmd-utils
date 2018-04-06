@@ -15,37 +15,42 @@ SET executorKey=%~n0-executor
 SET deletingPath=%~1
 IF ["%deletingPath%"] EQU [""] EXIT 1001
 
-SET executorHoldingFolder=%~2
+SET delaySeconds=%~2
+IF ["%delaySeconds%"] EQU [""] (
+  SET delaySeconds=5
+)
+
+SET executorHoldingFolder=%~3
 IF ["%executorHoldingFolder%"] EQU [""] (
   SET executorHoldingFolder=%LocalAppData%\Temp\%executorKey%
-)
-SET delaySeconds=%~3
-IF ["%delaySeconds%"] EQU [""] (
-  SET delaySeconds = 5
 )
 
 
 IF NOT EXIST "%executorHoldingFolder%" MKDIR "%executorHoldingFolder%"
 
-SET executorFile="%executorHoldingFolder%\%executorKey%-%RANDOM%%RANDOM%"
+SET executorFile="%executorHoldingFolder%\%executorKey%-%RANDOM%%RANDOM%.bat"
 
 
 
 @ECHO @SETLOCAL>%executorFile%
 (
-@ECHO @ECHO OFF
-@ECHO.
-@ECHO %executorKey%
-@ECHO.
-@ECHO @ECHO Deley 5 seconds to allow a runer to finish.
-@ECHO @CHOICE /N /C y /D y /T %delaySeconds% ^> NUL
-@ECHO.
-@ECHO RD /S /Q "%deletingPath%"
-@ECHO.
-@ECHO EXIT
+@ECHO:@ECHO OFF
+@ECHO:@ECHO:
+@ECHO:
+@ECHO:ECHO %executorKey%
+@ECHO:@ECHO:
+@ECHO:
+@ECHO:ECHO Deley %delaySeconds% before:
+@ECHO:ECHO RD /S /Q "%deletingPath%"
+@ECHO:
+@ECHO:CHOICE /N /C y /D y /T %delaySeconds% ^> NUL
+@ECHO:
+@ECHO:RD /S /Q "%deletingPath%"
+@ECHO:
+@ECHO:EXIT
 )>>%executorFile%
 
-START "%executorKey%" CMD /C %executorFile%
+START "%executorKey%" %executorFile%
 
 
 @CALL "%invokePath%\exit_if_error"
