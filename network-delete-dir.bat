@@ -15,7 +15,7 @@ SET del_dir_path=%1
 IF [%del_dir_path%] EQU [] EXIT 1001
 IF [%del_dir_path%] EQU [""] EXIT 1001
 
-@ECHO delete foder %del_dir_path%
+@ECHO delete folder %del_dir_path%
 
 IF NOT EXIST %del_dir_path% (
   @ECHO no such a folder %del_dir_path%
