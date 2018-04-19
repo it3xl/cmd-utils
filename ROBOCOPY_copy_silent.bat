@@ -18,6 +18,8 @@ SET target=%2
 IF [%target%] EQU [] EXIT 1002
 IF [%target%] EQU [""] EXIT 1002
 
+@ECHO (Only deletion of files on the target will be listed)
+
 @REM Ensures the copying process
 ROBOCOPY %source% %target% /E   /Z   /PURGE   /W:1 /R:300 /TBD   /NP /FP /NS /V  /NFL /NDL /NC
 
