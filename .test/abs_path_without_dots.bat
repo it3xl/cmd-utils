@@ -89,7 +89,7 @@ CALL ..\abs_path_without_dots.emit_errors.bat  "%myPath%"
 @ECHO @ Assertion: ERRORLEVEL must be 0 and is %ERRORLEVEL%
 @ECHO For
 @ECHO "%myPath%"
-@ECHO abs_path_without_dots is & @ECHO %abs_path_without_dots%
+@ECHO abs_path_without_dots is & @ECHO "%abs_path_without_dots%"
 @CALL REM Suppresses errors.
 
 @ECHO:
@@ -98,7 +98,7 @@ CALL ..\abs_path_without_dots.emit_errors.bat  "%myPath%"
 SET myPath=\\somename.location.company.position\SERVERNAME$\G039458\OPPA\Do It For'_'Me\Some Folder\.\..\Other Folder
 @ECHO For
 @ECHO %myPath%
-FOR /F "delims=" %%i IN ("%myPath%") DO ( ECHO The absolute path is & ECHO %%~fi )
+FOR /F "delims=" %%i IN ("%myPath%") DO ( ECHO The absolute path is & ECHO "%%~fi" )
 @CALL REM Suppresses errors.
 
 

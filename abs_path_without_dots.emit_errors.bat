@@ -54,6 +54,8 @@ IF [x%_raw_input_path%] EQU [x""] (
 @REM Credits: https://stackoverflow.com/questions/1645843/resolve-absolute-path-from-relative-path-and-or-file-name/10018990#10018990
 @REM 
 @ECHO ERRORLEVEL is %ERRORLEVEL%
-FOR /F "delims=" %%i IN (%_raw_input_path%) DO ( SET abs_path_without_dots=%%~fi )
+FOR /F "delims=" %%i IN (%_raw_input_path%) DO (
+  SET abs_path_without_dots=%%~fi
+)
 @ECHO ERRORLEVEL is %ERRORLEVEL%
 
