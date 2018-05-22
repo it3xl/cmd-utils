@@ -43,11 +43,11 @@ ROBOCOPY %source% %target% /E   /Z   /PURGE   /W:1 /R:300 /TBD   /NP /FP /NS /V
 @REM /TBD : Wait for sharenames To Be Defined (retry error 67).
 @REM 
 @REM Logging options
-@REM /NP : No Progress - don’t display % copied.
+@REM /NP : No Progress - don't display % copied.
 @REM /FP : Include Full Pathname of files in the output.
-@REM /NS : No Size - don’t log file sizes.
+@REM /NS : No Size - don't log file sizes.
 @REM /V : Produce Verbose output log, showing skipped files
-@REM /NDL : No Directory List - don’t log directory names.
+@REM /NDL : No Directory List - don't log directory names.
 
 
 @REM ROBOCOPY Exit Codes
