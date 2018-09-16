@@ -2,6 +2,14 @@
 
 @ECHO %~nx0
 
+
+
+@REM Be aware that this solution doesn't work if a sub-folder or a file is blocked/locked.
+@REM This approach isn't helpful https://stackoverflow.com/questions/11137702/rd-exits-with-errorlevel-set-to-0-on-error-when-deletion-fails-etc/11137825#11137825
+@REM Consider to use any another technology.
+
+
+
 SET invokePath=%~dp0.
 @REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
 SET invokePath=%invokePath:"=%
@@ -28,11 +36,18 @@ IF %cleanup_skip_newest_amount% LEQ 0 (
   SET "SKIP="
 )
 
-@REM Do not use %%~fF instead of %%F to get a full path! It is unsafe and depend on current executed folder!
+
+ECHO Check the access to %target_cleanup_folder%
+DIR /B "%target_cleanup_folder%">NUL
+@CALL "%invokePath%\exit_if_error"
+
+@REM Do not use %%~fF instead of %%F to get a full path! It is unsafe and depends on the current executed folder!
 FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:D "%target_cleanup_folder%"') DO (
-  @REM ! SET= do not works in loops!
+  @REM ! SET= doesn't work in loops out of the box!
+
   ECHO deleting %target_cleanup_folder%\%%F
   RD /S /Q "%target_cleanup_folder%\%%F"
+
   @REM https://stackoverflow.com/questions/22948189/batch-getting-the-directory-is-not-empty-on-rmdir-command/22949687#22949687
   IF EXIST "%target_cleanup_folder%\%%F" (
     RD /S /Q "%target_cleanup_folder%\%%F"
