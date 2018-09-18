@@ -48,6 +48,10 @@ FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:D "%target_cleanup_folder
   ECHO deleting %target_cleanup_folder%\%%F
   RD /S /Q "%target_cleanup_folder%\%%F"
 
+  @REM With Windows shared folders we always get the following case with the error "The directory is not empty"
+  @REM # RD C:\bla\ouch
+  @REM # C:\bla\ouch\SOME~1\InnerFolder - The directory is not empty.
+  @REM A workaround is to run the RD command for the second time.
   @REM https://stackoverflow.com/questions/22948189/batch-getting-the-directory-is-not-empty-on-rmdir-command/22949687#22949687
   IF EXIST "%target_cleanup_folder%\%%F" (
     RD /S /Q "%target_cleanup_folder%\%%F"
