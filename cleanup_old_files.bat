@@ -31,7 +31,7 @@ IF %cleanup_skip_newest_amount% LEQ 0 (
 @REM Do not use %%~fF instead of %%F to get a full path! It is unsafe and depend on the currently executed folder!
 FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:-D "%target_cleanup_folder%"') DO (
   @REM ! SET= do not works in loops!
-  ECHO deleting %target_cleanup_folder%\%%F
+  ECHO deleting "%target_cleanup_folder%\%%F"
   DEL /Q /F "%target_cleanup_folder%\%%F"
 )
 

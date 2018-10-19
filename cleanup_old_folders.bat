@@ -46,7 +46,7 @@ DIR /B "%target_cleanup_folder%">NUL
 FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D /A:D "%target_cleanup_folder%"') DO (
   @REM ! SET= doesn't work in loops out of the box!
 
-  ECHO deleting %target_cleanup_folder%\%%F
+  ECHO deleting "%target_cleanup_folder%\%%F"
   RD /S /Q "%target_cleanup_folder%\%%F"
 
   @REM With Windows shared folders we always get the following case with the error "The directory is not empty"
