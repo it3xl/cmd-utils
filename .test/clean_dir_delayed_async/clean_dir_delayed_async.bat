@@ -1,7 +1,7 @@
 @SETLOCAL
 
 
-CD %SYSTEMDRIVE%\
+CD /D %SYSTEMDRIVE%\
 
 SET invokePath=%~dp0.
 @REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
