@@ -15,6 +15,8 @@ SET invokePath=%~dp0.
 @REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
 SET invokePath=%invokePath:"=%
 
+SET worker=%~f0
+
 CALL "%invokePath%\exit_if_error.bat"
 
 SET cleanup_skip_newest_amount=%1
@@ -63,6 +65,13 @@ FOR /F "%SKIP% eol=: delims=" %%F IN ('DIR /B /O:-D %sort% /A:D "%target_cleanup
     IF %demo% EQU 0  RD /S /Q "%target_cleanup_folder%\%%F"
   )
 )
+
+CALL "%invokePath%\exit_if_error.bat"
+(
+  ECHO Cleaned up at %DATE% %TIME%
+  ECHO from %COMPUTERNAME%
+  ECHO by "%worker%"
+)>"%target_cleanup_folder%\.cleanup.log"
 
 CALL "%invokePath%\exit_if_error.bat"
 
