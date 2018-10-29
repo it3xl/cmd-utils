@@ -30,13 +30,13 @@ SET abs_path_without_dots=%SystemDrive%\error\cmd-util\abs_path_without_dots
 
 SET _raw_input_path="%1"
 SET _raw_input_path="%_raw_input_path:"=%"
-@ECHO ERRORLEVEL is %ERRORLEVEL%
+SET dummy_var_for_trace_output=ERRORLEVEL is %ERRORLEVEL%
 IF [x%_raw_input_path%] EQU [x""] (
   ECHO ERROR! Input path is empty!
   
   EXIT /B 3001
 )
-@ECHO ERRORLEVEL is %ERRORLEVEL%
+SET dummy_var_for_trace_output=ERRORLEVEL is %ERRORLEVEL%
 
 
 @REM The symbol % was doubled below to prevent slow executions for real UNC paths, even under the REM command.
@@ -53,9 +53,9 @@ IF [x%_raw_input_path%] EQU [x""] (
 
 @REM Credits: https://stackoverflow.com/questions/1645843/resolve-absolute-path-from-relative-path-and-or-file-name/10018990#10018990
 @REM 
-@ECHO ERRORLEVEL is %ERRORLEVEL%
+SET dummy_var_for_trace_output=ERRORLEVEL is %ERRORLEVEL%
 FOR /F "delims=" %%i IN (%_raw_input_path%) DO (
   SET abs_path_without_dots=%%~fi
 )
-@ECHO ERRORLEVEL is %ERRORLEVEL%
+SET dummy_var_for_trace_output=ERRORLEVEL is %ERRORLEVEL%
 
