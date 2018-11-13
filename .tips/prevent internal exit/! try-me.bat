@@ -5,7 +5,28 @@
 ECHO ====== Beginninbg of "%~nx0"
 ECHO.
 ECHO.
-ECHO ====== @ First we will use 'CMD /C CALL  command_or_batch' approach.
+ECHO ====== @ First, we will use 'CMD /C  command_or_batch' approach.
+ECHO.
+
+ECHO.
+CMD /C "%invokePath%\fails.bat"
+ECHO ====== Interanl exit by a fail is prevented.
+ECHO ====== ERRORLEVEL is %ERRORLEVEL%
+
+ECHO.
+CMD /C "%invokePath%\exit.bat"
+ECHO ====== Interanl exit is prevented.
+ECHO ====== ERRORLEVEL is %ERRORLEVEL%
+
+ECHO.
+CMD /C "%invokePath%\no-exit.bat"
+ECHO ====== Checking of non-blocking invocation.
+ECHO ====== ERRORLEVEL is %ERRORLEVEL%
+
+ECHO.
+ECHO.
+ECHO.
+ECHO ====== @ Second, we will use 'CMD /C CALL  command_or_batch' approach.
 ECHO.
 
 ECHO.
@@ -26,7 +47,7 @@ ECHO ====== ERRORLEVEL is %ERRORLEVEL%
 ECHO.
 ECHO.
 ECHO.
-ECHO ====== @ Second we will use 'START "title" /wait CMD /C  command_or_batch' approach.
+ECHO ====== @ Third, we will use 'START "title" /wait CMD /C  command_or_batch' approach.
 ECHO.
 
 
