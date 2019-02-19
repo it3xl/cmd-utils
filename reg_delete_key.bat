@@ -13,6 +13,8 @@ IF ["%reg_key%"] EQU [""] EXIT 1001
 
 REG DELETE "%reg_key%" /f  /reg:64
 
+IF %ERRORLEVEL% NEQ 0  ECHO:
+
 
 @REM Will exit with 0 exit code to prevent spam to ERRORLEVEL if process not started.
 @EXIT /B 0
