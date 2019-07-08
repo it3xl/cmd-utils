@@ -3,14 +3,17 @@
 @ECHO %~nx0
 
 SET seconds=%1
-IF [%seconds%] EQU [] EXIT 1001
+IF [%seconds%] EQU [] (
+    ECHO ERROR! Empty first input parameter.
+    EXIT 1001
+)
 
-@ECHO %~nx0 / Delay %seconds% seconds.
+@ECHO Delay for %seconds% seconds.
 
+@REM CHOICE doesn't work under the non-interactive mode and fails with the error
+@REM ERROR: The file is either empty or does not contain the valid choices.
+@REM @CHOICE /N /C y /D y /T %seconds% > NUL
+TIMEOUT  /t %seconds% > NUL
 
-@CHOICE /N /C y /D y /T %seconds% > NUL
-
-@REM Will exit with 0 exit code to prevent spam to ERRORLEVEL from the CHOICE command.
-@EXIT /B 0
 
 
