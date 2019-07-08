@@ -10,10 +10,15 @@ IF [%seconds%] EQU [] (
 
 @ECHO Delay for %seconds% seconds.
 
-@REM CHOICE doesn't work under the non-interactive mode and fails with the error
-@REM ERROR: The file is either empty or does not contain the valid choices.
+@REM Non-Interactive process/account troubles.
 @REM @CHOICE /N /C y /D y /T %seconds% > NUL
-TIMEOUT  /t %seconds% > NUL
+@REM It fails with ERROR: The file is either empty or does not contain the valid choices.
+@REM TIMEOUT  /t %seconds% > NUL
+@REM It fails with ERROR: Input redirection is not supported, exiting the process immediately.
+@REM Workaround: https://stackoverflow.com/questions/1672338/how-to-sleep-for-five-seconds-in-a-batch-file-cmd/33286113#33286113
+@REM W32TM /stripchart /computer:localhost /period:%seconds% /Dataonly /samples:2 >nul
+@REM 
+TypePerf "\System\Processor Queue Length" -si %seconds% -sc 1 >nul
 
 
 
