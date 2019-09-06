@@ -1,5 +1,9 @@
 @ECHO:
-@ECHO @ will get the followign error for the following expression
+@ECHO @ then the following expression
+@ECHO IF 1==1 (  SET x=%%v%%  )
+@ECHO:
+@ECHO @ will produce some error like
 @ECHO:
 IF 1==1 (  SET x=%v%  )
-@ECHO @ It is the "never be shown" success message!
+@REM
+@ECHO @ This message will never be shown!
