@@ -100,12 +100,13 @@ IF EXIST %del_dir_path% (
 )
 
 
+@CALL REM Suppresses previous errors.
+
+
 IF EXIST %del_dir_path% (
-  @ECHO Cannot delete the folder %del_dir_path%
+  @ECHO ERROR! Cannot delete the folder %del_dir_path%
   EXIT 222
 )
-
-@CALL "%invokePath%\exit_if_error"
 
 
 ECHO End %~nx0
