@@ -1,3 +1,4 @@
+@SETLOCAL
 
 @REM This code block detects if the script is being running with admin PRIVILEGES If it isn't it pauses and then quits.
 @REM https://stackoverflow.com/questions/4051883/batch-script-how-to-check-for-admin-rights/8995407#8995407
