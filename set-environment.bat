@@ -2,10 +2,6 @@
 
 @ECHO %~nx0
 
-CHCP
-@REM Seting UTF-8 encoding.
-@REM CHCP 65001
-
 
 IF ["%env_defined_at%"] NEQ [""] EXIT /B;
 
@@ -15,15 +11,10 @@ SET env_cmd_util=%env_cmd_util:"=%
 SET q_env_cmd_util="%env_cmd_util%"
 
 
-
-WMIC OS GET LocalDateTime
-
-
-REM 850
 FOR /f "tokens=2 delims=:." %%x IN ('CHCP') DO SET current_CHCP=%%x
-CHCP 850
+CHCP 850>NUL
 FOR /F %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
-CHCP %current_CHCP%
+CHCP %current_CHCP%>NUL
 
 SET env_date=%DTS:~0,4%.%DTS:~4,2%.%DTS:~6,2%
 SET env_time=%DTS:~8,2%.%DTS:~10,2%
@@ -32,6 +23,6 @@ SET env_time_sec=%DTS:~8,2%.%DTS:~10,2%-%DTS:~12,2%
 SET env_defined_at=%env_date% %env_time_sec%
 
 ECHO.
-ECHO DTS %DTS%
+REM ECHO DTS %DTS%
 ECHO env_defined_at %env_defined_at%
 ECHO.
