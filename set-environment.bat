@@ -11,10 +11,8 @@ SET env_cmd_util=%env_cmd_util:"=%
 SET q_env_cmd_util="%env_cmd_util%"
 
 
-FOR /f "tokens=2 delims=:." %%x IN ('CHCP') DO SET current_CHCP=%%x
-CHCP 850>NUL
+
 FOR /F %%a IN ('WMIC OS GET LocalDateTime ^| FIND "."') DO SET DTS=%%a
-CHCP %current_CHCP%>NUL
 
 SET env_date=%DTS:~0,4%.%DTS:~4,2%.%DTS:~6,2%
 SET env_time=%DTS:~8,2%.%DTS:~10,2%
