@@ -105,7 +105,7 @@ IF EXIST %del_dir_path% (
 
 IF EXIST %del_dir_path% (
   @ECHO ERROR! Cannot delete the folder %del_dir_path%
-  EXIT 222
+  EXIT /B 222
 )
 
 
