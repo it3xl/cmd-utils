@@ -8,9 +8,18 @@ SET invokePath=%invokePath:"=%
 
 @CALL "%invokePath%\exit_if_error"
 
+
+SET error_code=0
+
 SET clean_dir_path=%1
-IF [%clean_dir_path%] EQU [] EXIT 1001
-IF [%clean_dir_path%] EQU [""] EXIT 1001
+IF [%clean_dir_path%] EQU [] SET error_code=1001
+IF [%clean_dir_path%] EQU [""] SET error_code=1001
+
+@IF %error_code% NEQ 0 (
+  @ECHO Exit with %error_code% error.
+  EXIT %error_code%
+)
+
 
 @ECHO Clean folder %clean_dir_path%
 

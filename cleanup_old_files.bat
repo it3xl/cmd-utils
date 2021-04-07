@@ -8,12 +8,22 @@ SET invokePath=%invokePath:"=%
 
 CALL "%invokePath%\exit_if_error.bat"
 
+
+SET error_code=0
+
 SET cleanup_skip_newest_amount=%1
-IF [%cleanup_skip_newest_amount%] EQU [] EXIT 1001
+IF [%cleanup_skip_newest_amount%] EQU [] SET error_code=1001
 
 SET target_cleanup_folder=%2
-IF [%target_cleanup_folder%] EQU [] EXIT 1002
-IF [%target_cleanup_folder%] EQU [""] EXIT 1002
+IF [%target_cleanup_folder%] EQU [] SET error_code=1002
+IF [%target_cleanup_folder%] EQU [""] SET error_code=1002
+
+@IF %error_code% NEQ 0 (
+  @ECHO Exit with %error_code% error.
+  EXIT %error_code%
+)
+
+
 SET target_cleanup_folder=%target_cleanup_folder:"=%
 
 SET sort=%3

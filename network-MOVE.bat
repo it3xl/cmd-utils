@@ -11,17 +11,23 @@ SET invokePath=%invokePath:"=%
 
 @CALL "%invokePath%\exit_if_error"
 
-@REM This method is much faster than ROBOCOPY!
+@REM This logic is much faster than ROBOCOPY! FYI.
+
+
+SET error_code=0
 
 SET source=%1
-@ECHO source: %source%
-IF [%source%] EQU [] EXIT 1001
-IF [%source%] EQU [""] EXIT 1001
+IF [%source%] EQU [] SET error_code=1001
+IF [%source%] EQU [""] SET error_code=1001
 
 SET target=%2
-@ECHO target: %target%
-IF [%target%] EQU [] EXIT 1002
-IF [%target%] EQU [""] EXIT 1002
+IF [%target%] EQU [] SET error_code=1002
+IF [%target%] EQU [""] SET error_code=1002
+
+@IF %error_code% NEQ 0 (
+  @ECHO Exit with %error_code% error.
+  EXIT %error_code%
+)
 
 
 @REM We should postpone because win-network bug "Access is denied. 0 dir(s) moved."
