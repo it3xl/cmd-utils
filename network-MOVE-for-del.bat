@@ -2,8 +2,8 @@
 
 @REM ECHO OFF
 
-@REM This logic tries to move a folder to a place where it will be later delete.
-@REM But the folder can't be moved then it will be deleted.
+@REM This logic tries to move a folder to a place where it will be later deleted.
+@REM But if the folder can't be moved then it will be deleted.
 @REM We need this logic because somtimes Windows locks folder renaming of moving but allows deletion of it.
 
 @ECHO %~nx0
