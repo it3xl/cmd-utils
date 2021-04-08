@@ -31,7 +31,8 @@ IF [%target%] EQU [""] SET error_code=1002
 )
 
 
-CALL "%invokePath%\network-MOVE.bat"  %source%  %target%
+@REM We append with 'CMD /C CALL' to prevent entire process exiting because of exiting from the 'network-MOVE.bat' file.
+CMD /C CALL "%invokePath%\network-MOVE.bat"  %source%  %target%
 
 @IF %ERRORLEVEL% NEQ 0 (
   @CALL REM Suppresses previous errors.

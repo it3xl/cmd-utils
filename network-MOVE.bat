@@ -1,6 +1,7 @@
 @SETLOCAL
 
-@REM ECHO OFF
+@REM We have to use ECHO OFF becase this batch file is invoked from network-MOVE-for-del.bat as a separate process.
+@ECHO OFF
 
 
 @ECHO %~nx0
