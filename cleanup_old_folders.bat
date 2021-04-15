@@ -4,9 +4,11 @@
 
 
 
-@REM Be aware that this solution doesn't work if a sub-folder or a file is blocked/locked.
-@REM The following approach isn't helpful https://stackoverflow.com/questions/11137702/rd-exits-with-errorlevel-set-to-0-on-error-when-deletion-fails-etc/11137825#11137825
-@REM Consider to use any another technology.
+@REM Be aware that this solution cleanups locked folders except locked files in them.
+@REM And such the locked folders will not be added to the skipped amount.
+
+@REM Info
+@REM https://stackoverflow.com/questions/11137702/rd-exits-with-errorlevel-set-to-0-on-error-when-deletion-fails-etc/11137825#11137825
 @REM See also https://ss64.com/nt/syntax-delolder.html
 
 
