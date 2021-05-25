@@ -1,6 +1,6 @@
 @SETLOCAL
 
-@ECHO %~nx0
+@ECHO %~nx0  %*
 
 SET invokePath=%~dp0.
 @REM The CALL preserves quotes for ~dp0. Prevents problems "Extra quotes inside a path" if this file invoked with a path with quotes.
@@ -12,12 +12,10 @@ SET invokePath=%invokePath:"=%
 SET error_code=0
 
 SET source=%1
-@ECHO source: %source%
 IF [%source%] EQU [] SET error_code=1001
 IF [%source%] EQU [""] SET error_code=1001
 
 SET target=%2
-@ECHO target: %target%
 IF [%target%] EQU [] SET error_code=1002
 IF [%target%] EQU [""] SET error_code=1002
 
@@ -27,10 +25,8 @@ IF [%target%] EQU [""] SET error_code=1002
 )
 
 
-@ECHO (Only deletion of files on the target will be listed)
 
-@REM Ensures the copying process
-ROBOCOPY %source% %target% /E   /Z   /PURGE   /W:1 /R:300 /TBD   /NP /FP /NS /V  /NFL /NDL /NC
+ROBOCOPY %*  /S  /Z  /W:1 /R:300 /TBD   /NP /FP /NS /V  /NFL /NDL /NC /NJH /NJS
 
 @REM The Key Options
 @REM 
@@ -38,6 +34,7 @@ ROBOCOPY %source% %target% /E   /Z   /PURGE   /W:1 /R:300 /TBD   /NP /FP /NS /V 
 @REM https://technet.microsoft.com/library/cc733145(v=ws.10).aspx
 @REM 
 @REM Source
+@REM /S : Copy Subfolders.
 @REM /E : Copy Subfolders, including Empty Subfolders.
 @REM 
 @REM Copy options
@@ -59,6 +56,8 @@ ROBOCOPY %source% %target% /E   /Z   /PURGE   /W:1 /R:300 /TBD   /NP /FP /NS /V 
 @REM /NS : No Size - don't log file sizes.
 @REM /V : Produce Verbose output log, showing skipped files
 @REM /NDL : No Directory List - don't log directory names.
+@REM /NJH : No Job Header.
+@REM /NJS : No Job Summary.
 
 
 @REM ROBOCOPY Exit Codes

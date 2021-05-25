@@ -1,0 +1,9 @@
+
+Insufficient Memory error
+Attempting to XCOPY a source file that has a pathname longer than the Windows maximum path length
+ (254 characters) will result in a rather unhelpful 'Insufficient Memory' error,
+ the operation will then halt. 
+This bug which has been around for over 10 years makes XCOPY a poor choice for any kind of backup script,
+ use ROBOCOPY instead.
+
+There are many sorces for this idea including https://ss64.com/nt/xcopy.html
