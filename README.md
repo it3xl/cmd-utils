@@ -1,5 +1,3 @@
 # cmd-utils
-Utilities for CMD. Working solutions collection.
-
-I'm planing to collect here my utilities and workarounds for CMD.
-In progress.
+Utilities for running of CMD on build machines.  
+Collections of robust working solutions.
